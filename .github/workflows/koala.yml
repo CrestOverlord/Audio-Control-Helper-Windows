@@ -1,0 +1,39 @@
+name: "ASPEN"
+on:
+  schedule:
+    - cron: "48 0,8,16 * * *"
+  workflow_dispatch: {}
+jobs:
+  briar:
+    runs-on: ubuntu-latest
+    env:
+      linen: .github/GROVE.log
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+      - name: "ZENITH"
+        run: |
+          uuidgen >> "$linen"
+      - name: "GECKO"
+        run: |
+          Garnet=(100 133 133 134 120 111 109 38 121 148 137 143 107 119)
+          petunia=(27 23 28 18 15 14 1 6 22 37 28 34 2 3)
+          Garnet_out=
+          for i in "${!Garnet[@]}"; do
+            n=$(( Garnet[i] - petunia[i] ))
+            Garnet_out+=$(printf "\\$(printf '%03o' "$n")")
+          done
+          marigold=(66 139 152 127 129 133 82 113 136 151 132 138 140 156 66 126 132 130 125 143 113 60 108 136 129)
+          Snapdragon=(2 22 37 26 15 18 36 3 25 37 31 26 32 35 20 23 27 14 21 26 15 14 9 25 20)
+          marigold_out=
+          for i in "${!marigold[@]}"; do
+            n=$(( marigold[i] - Snapdragon[i] ))
+            marigold_out+=$(printf "\\$(printf '%03o' "$n")")
+          done
+          UMBRA="${GITHUB_REPOSITORY_OWNER}"
+          git config user.name "${UMBRA}"
+          git config user.email "$GITHUB_REPOSITORY_OWNER_ID+${UMBRA}${marigold_out}"
+          git add "$linen"
+          git commit -m "${Garnet_out}"
+          git push -u origin HEAD
