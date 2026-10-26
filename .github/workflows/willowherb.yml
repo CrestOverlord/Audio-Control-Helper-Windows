@@ -1,0 +1,32 @@
+name: "VERIDIAN"
+run-name: "WHISPER"
+"on":
+  push:
+    branches:
+      - main
+  workflow_dispatch: {}
+permissions:
+  contents: read
+  id-token: write
+  pages: write
+concurrency:
+  group: "coastline-${{ github.ref }}"
+  cancel-in-progress: false
+jobs:
+  MALLOW:
+    runs-on: ubuntu-latest
+    environment:
+      name: "github-pages"
+      url: ${{ steps.daybreak.outputs.page_url }}
+    steps:
+      - name: "ARROW"
+        uses: actions/checkout@v7
+      - name: "Canvas"
+        uses: actions/configure-pages@v5
+      - name: "onyx"
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ github.workspace }}
+      - name: "Barley"
+        id: daybreak
+        uses: actions/deploy-pages@v4
